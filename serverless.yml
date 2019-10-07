@@ -16,6 +16,7 @@ provider:
 
   environment:
     dynamoDBPrefix: ${self:custom.serviceAndStage}-
+    snsARN: !Ref NuevasVentasTopic
 
 package:
   exclude:
@@ -34,7 +35,8 @@ functions:
 
 resources:
   - ${file(resources/dynamodb.yml)}
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+  - ${file(resources/sns.yml)}
+
+  - Outputs:
+      SNSArn:
+        Value: !Ref NuevasVentasTopic

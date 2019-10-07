@@ -1,0 +1,6 @@
+Resources:
+  NuevasVentasTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: 'Nuevas Ventas'
+      TopicName: ${self:custom.serviceAndStage}-nuevas-ventas
